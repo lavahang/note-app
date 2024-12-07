@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
 
     }
     catch(error){
-
+        console.log(error.message)
         return res.status(500).json({ success:false, message:"Error in adding user"})
     }
 
