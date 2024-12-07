@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import connectToMongoDB from './db/db.js'
 
 import authRouter from './routes/auth.js'
 
@@ -11,5 +12,6 @@ app.use('/api/auth', authRouter)
 
 
 app.listen(port, () => {
+    connectToMongoDB();
     console.log(`Note app listening on port ${port}`)
   })
