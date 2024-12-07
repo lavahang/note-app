@@ -1,19 +1,24 @@
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
             // maile axios request lagayera server ma name,email,password send gareko server lai
             const response = await axios.post('http://localhost:3000/api/auth/register',{name,email,password});
-            console.log(response);    
+            console.log(response); 
+            if(response.data.success){
+                navigate('/login')
+            }   
         }
         catch(error){
             console.log(error);          
@@ -50,7 +55,7 @@ const Signup = () => {
             <div className=' mb-4'>
             <button type='submit' className=' w-full bg-teal-600 text-white py-2'>Signup</button>
             <p className=' text-center'>
-                Already Have Account?  <a href="">Login</a>
+                Already Have Account?  <Link to="/login">Login</Link>
             </p>
             </div>
         </form>
