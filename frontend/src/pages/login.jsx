@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Nav_log_signin from '../components/Nav_log_signin';
 
 const Login = () => {
 
@@ -26,6 +27,10 @@ const Login = () => {
     }
 
   return (
+    <>
+    <div>
+    <Nav_log_signin/>
+    </div>
     <div className=' flex justify-center items-center min-h-screen bg-gray-100'>
         <div className=' border shadow p-6 w-80 bg-white'>
         <h2 className=' text-2xl font-bold mb-4'>Login</h2>
@@ -54,6 +59,7 @@ const Login = () => {
 
         </div>
     </div>
+    </>
   )
 }
 
