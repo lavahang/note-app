@@ -15,5 +15,3 @@ const ContextProvider = ({children}) => {
 }
 export const useAuth = () => useContext(authContext)
 export default ContextProvider
-
-// now after 50 min 
