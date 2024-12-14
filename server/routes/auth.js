@@ -2,6 +2,7 @@ import express from 'express'
 import User from '../models/Users.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 
 const router = express.Router()
 
@@ -46,7 +47,7 @@ router.post('/register', async (req, res) => {
             return res.status(401).json({success: false, message: "Wrong Credentials"}) 
         }
 
-        const token = jwt.sign({id: user._id}, "secretkeyofnoteapp1",{expiresIn: "1h"})
+        const token = jwt.sign({id: user._id}, process.env.SECRET_KEY,{expiresIn: "1h"})
        
         return res.status(200).json({success:true, token, user: {name: user.name}, message:"Login successfully"})
 
