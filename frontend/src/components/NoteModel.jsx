@@ -1,23 +1,13 @@
 import React, { useState } from 'react'
 
-const NoteModel = ({closeModal}) => {
+const NoteModel = ({closeModal, addNote}) => {
     const [title,setTitle] = useState("")
     const [description, setDescription] = useState("")
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        try{
-            // maile axios request lagayera server ma title, description send gareko server lai
-            const response = await axios.post('http://localhost:3000/api/note/add',{title, description});
-            console.log(response); 
-            if(response.data.success){
-                navigate('/')
-                closeModal()
-            }   
-        }
-        catch(error){
-            console.log(error);          
-        }
+        addNote(title, description)
+        
     }
   return (
     <div className=' fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center'>
