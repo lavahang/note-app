@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import NoteModel from '../components/NoteModel'
+import axios from 'axios'
 
 const Home = () => {
    const [isModalOpen, setModalOpen] = useState(false)
@@ -12,7 +13,13 @@ const Home = () => {
    const addNote = async ( title, description) => {
     try{
       // maile axios request lagayera server ma title, description send gareko server lai
-      const response = await axios.post('http://localhost:3000/api/note/add',{title, description});
+      const response = await axios.post('http://localhost:3000/api/note/add',{ title, description },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
       console.log(response); 
       if(response.data.success){
           // navigate('/')
