@@ -7,6 +7,8 @@ import NoteCard from '../components/NoteCard'
 const Home = () => {
    const [isModalOpen, setModalOpen] = useState(false)
    const [notes, setNotes] = useState([])
+   // for edit
+   const [currentNote, setCurrentNote] = useState(null)
 
    useEffect(() => {
     
@@ -25,6 +27,12 @@ const Home = () => {
 
    const closeModal = () => {
     setModalOpen(false)
+   }
+
+   // for edit
+   const onEdit = (note) => {
+    setCurrentNote(note)
+    setModalOpen(true)
    }
 
    const addNote = async ( title, description) => {
@@ -57,6 +65,7 @@ const Home = () => {
       {notes.map(note => (
         <NoteCard
           note={note} // key={note._id}
+          onEdit={onEdit}
         />
       ))}
     </div>
