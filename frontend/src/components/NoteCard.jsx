@@ -1,5 +1,5 @@
 import React from 'react'
-// the icons are imported from react icon website,library
+// the icons are imported from react icon website
 import { FaEdit,FaTrash } from "react-icons/fa";
 
 const NoteCard = ({note, onEdit}) => {
