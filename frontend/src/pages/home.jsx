@@ -57,6 +57,29 @@ const Home = () => {
   }
    }
 
+   const editNote = async (id, title, description) => {
+    try{
+      // maile axios request lagayera server ma title, description send gareko server lai
+      const response = await axios.put(`http://localhost:3000/api/note/${id}`,{ title, description },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+      console.log(response); 
+      if(response.data.success){
+          fetchNotes()
+          // navigate('/')
+          closeModal()
+      }   
+  }
+  catch(error){
+      console.log(error);          
+  }
+
+   }
+
   return (
     <div className=' bg-gray-100 min-h-screen'>
     <Navbar/>
@@ -64,7 +87,7 @@ const Home = () => {
     <div className=' px-8 pt-4 grid grid-cols-1 md:grid-cols-3 gap-6'>
       {notes.map(note => (
         <NoteCard
-          note={note} // key={note._id}
+          note={note} key={note._id} 
           onEdit={onEdit}
         />
       ))}
@@ -74,7 +97,7 @@ const Home = () => {
      className=' fixed right-4 bottom-4 text-2xl bg-teal-500 text-white font-bold p-4 rounded-full'>
         +
     </button>
-    {isModalOpen && <NoteModel closeModal={closeModal} addNote={addNote}/>}
+    {isModalOpen && <NoteModel closeModal={closeModal} addNote={addNote} currentNote={currentNote} editNote={editNote}/>}
 
     </div>
   )
