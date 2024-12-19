@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+// this is npm library for using .env file
 import 'dotenv/config'
 
 const connectToMongoDB = async () => {
