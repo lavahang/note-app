@@ -80,6 +80,30 @@ const Home = () => {
 
    }
 
+   const deleteNote = async (id) => {
+
+    try{
+      // maile axios request lagayera server ma title, description send gareko server lai
+      const response = await axios.delete(`http://localhost:3000/api/note/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+      console.log(response); 
+      if(response.data.success){
+          fetchNotes()
+          // navigate('/')
+          // closeModal()
+      }   
+  }
+  catch(error){
+      console.log(error);          
+  }
+
+   }
+
   return (
     <div className=' bg-gray-100 min-h-screen'>
     <Navbar/>
@@ -89,6 +113,7 @@ const Home = () => {
         <NoteCard
           note={note} key={note._id} 
           onEdit={onEdit}
+          deleteNote={deleteNote}
         />
       ))}
     </div>
