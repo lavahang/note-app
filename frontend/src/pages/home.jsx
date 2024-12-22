@@ -9,11 +9,22 @@ const Home = () => {
    const [notes, setNotes] = useState([])
    // for edit
    const [currentNote, setCurrentNote] = useState(null)
+   // for filtering notes
+   const [filteredNotes, setfilteredNotes] = useState([])
+   const [query, setQuery] = useState('')
 
    useEffect(() => {
     
     fetchNotes()
    }, [])
+
+   useEffect( () => {
+    setfilteredNotes(
+      notes.filter((note) =>
+      note.title.toLowerCase().includes(query.toLocaleLowerCase()) ||
+      note.description.toLowerCase().includes(query.toLocaleLowerCase()))
+    )
+   }, [query,notes])
 
    const fetchNotes = async () => {
     try {
@@ -106,16 +117,16 @@ const Home = () => {
 
   return (
     <div className=' bg-gray-100 min-h-screen'>
-    <Navbar/>
+    <Navbar setQuery={setQuery}/>
 
     <div className=' px-8 pt-4 grid grid-cols-1 md:grid-cols-3 gap-6'>
-      {notes.map(note => (
+      {filteredNotes.length > 0 ? filteredNotes.map((note) => (
         <NoteCard
           note={note} key={note._id} 
           onEdit={onEdit}
           deleteNote={deleteNote}
         />
-      ))}
+      )) : <h1 className=' text-red-600 text-xl'>Note Not Found</h1>}
     </div>
 
     <button onClick={() => setModalOpen(true)}
