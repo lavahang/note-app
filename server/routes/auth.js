@@ -2,6 +2,7 @@ import express from 'express'
 import User from '../models/Users.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import middleware from '../middleware/middleware.js'
 import 'dotenv/config'
 
 const router = express.Router()
@@ -58,6 +59,10 @@ router.post('/register', async (req, res) => {
 
 
   })
+
+  router.get('/verify', middleware, async (req,res) => {
+    return res.status(200).json({success:true, user: req.user})
+  } )
 
 
   export default router
