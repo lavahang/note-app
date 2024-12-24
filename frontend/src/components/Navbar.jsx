@@ -11,13 +11,13 @@ const Navbar = ({setQuery}) => {
         <Link to="/" >NoteApp</Link>
     </div>
     {/* if user is not login then display this otherwise */}
-    {/* {!user ? (
+    {!user ? (
    <input type='text'  className='  bg-gray-800 px-4 py-2 rounded' disabled />
     )
     : (
         <input type='text' placeholder='Search notes ...' className=' bg-gray-600 px-4 py-2 rounded' 
     onChange={(e) => setQuery(e.target.value)} />
-    )} */}
+    )}
     <div>
        {/* if user is not login then display this otherwise */}
         {!user ? (
