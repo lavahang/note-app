@@ -12,7 +12,7 @@ const ContextProvider = ({children}) => {
       localStorage.removeItem('token')
       setUser(null)
       // redirect to home page
-      // location.href='/'   
+      location.href='/'   
            
   }
 
