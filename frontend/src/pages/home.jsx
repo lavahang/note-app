@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import NoteModel from '../components/NoteModel'
 import axios from 'axios'
 import NoteCard from '../components/NoteCard'
+// import {toast} from 'react-toastify'
 
 const Home = () => {
    const [isModalOpen, setModalOpen] = useState(false)
@@ -109,6 +110,7 @@ const Home = () => {
       );
       console.log(response); 
       if(response.data.success){
+        // toast.success('Note deleted')
           fetchNotes()
           // navigate('/')
           // closeModal()

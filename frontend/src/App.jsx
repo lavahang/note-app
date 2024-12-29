@@ -3,6 +3,7 @@ import Login from "./pages/login.jsx"
 import Signup from "./pages/signup"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import {ToastContainer} from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Route path="/register" element={<Signup/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
       </Routes>
-      {/* <ToastContainer/>    */}
+      <ToastContainer/>   
     </BrowserRouter>
 
     </>
