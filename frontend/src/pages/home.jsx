@@ -110,7 +110,7 @@ const Home = () => {
       );
       console.log(response); 
       if(response.data.success){
-        // toast.success('Note deleted')
+        toast.success('Note deleted')
           fetchNotes()
           // navigate('/')
           // closeModal()
