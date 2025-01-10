@@ -11,11 +11,7 @@ const middleware = async (req, res, next) => {
             return res.status(401).json({success: false, message: "Unauthorized"})
         }
 
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
-
-        if(!decoded) {
-            return res.status(401).json({success: false, message: "Wrong token"})
-        }
+       
 
         const user = await User.findById({_id: decoded.id})
 
