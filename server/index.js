@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import connectToMongoDB from './db/db.js'
 
-import authRouter from './routes/auth.js'
+// import authRouter from './routes/auth.js'
 import noteRouter from './routes/note.js'
 
 const app = express()
