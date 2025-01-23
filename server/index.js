@@ -17,4 +17,5 @@ app.use('/api/note', noteRouter)
 app.listen(port, () => {
     connectToMongoDB();
     console.log(`Note app listening on port ${port}`)
+     console.log(`Note app listening on port 3000 deleted`)
   })
